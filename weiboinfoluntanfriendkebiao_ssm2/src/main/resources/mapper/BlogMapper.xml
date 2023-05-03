@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.BlogMapper">
+  <resultMap id="BaseResultMap" type="com.ideabobo.model.Blog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="ndate" jdbcType="VARCHAR" property="ndate" />
+    <result column="btype" jdbcType="VARCHAR" property="btype" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="video" jdbcType="VARCHAR" property="video" />
+    <result column="typeid" jdbcType="INTEGER" property="typeid" />
+    <result column="typecn" jdbcType="VARCHAR" property="typecn" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="favcount" jdbcType="INTEGER" property="favcount" />
+    <result column="zan" jdbcType="INTEGER" property="zan" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="nm" jdbcType="INTEGER" property="nm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, note, ndate, btype, img, video, typeid, typecn, uid, username, favcount, 
+    zan, address, nm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wct_blog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wct_blog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideabobo.model.Blog">
+    insert into wct_blog (id, title, note, 
+      ndate, btype, img, 
+      video, typeid, typecn, 
+      uid, username, favcount, 
+      zan, address, nm)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{ndate,jdbcType=VARCHAR}, #{btype,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
+      #{video,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{typecn,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{favcount,jdbcType=INTEGER}, 
+      #{zan,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{nm,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideabobo.model.Blog">
+    insert into wct_blog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="ndate != null">
+        ndate,
+      </if>
+      <if test="btype != null">
+        btype,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="video != null">
+        video,
+      </if>
+      <if test="typeid != null">
+        typeid,
+      </if>
+      <if test="typecn != null">
+        typecn,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="favcount != null">
+        favcount,
+      </if>
+      <if test="zan != null">
+        zan,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="nm != null">
+        nm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="btype != null">
+        #{btype,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null">
+        #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="typecn != null">
+        #{typecn,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="favcount != null">
+        #{favcount,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null">
+        #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="nm != null">
+        #{nm,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideabobo.model.Blog">
+    update wct_blog
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        ndate = #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="btype != null">
+        btype = #{btype,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null">
+        video = #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="typecn != null">
+        typecn = #{typecn,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="favcount != null">
+        favcount = #{favcount,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null">
+        zan = #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="nm != null">
+        nm = #{nm,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideabobo.model.Blog">
+    update wct_blog
+    set title = #{title,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      ndate = #{ndate,jdbcType=VARCHAR},
+      btype = #{btype,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      video = #{video,jdbcType=VARCHAR},
+      typeid = #{typeid,jdbcType=INTEGER},
+      typecn = #{typecn,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      favcount = #{favcount,jdbcType=INTEGER},
+      zan = #{zan,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      nm = #{nm,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

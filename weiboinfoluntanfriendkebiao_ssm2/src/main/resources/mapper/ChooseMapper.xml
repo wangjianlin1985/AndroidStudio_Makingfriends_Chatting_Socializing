@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.ChooseMapper">
+  <resultMap id="BaseResultMap" type="com.ideabobo.model.Choose">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="daan" jdbcType="VARCHAR" property="daan" />
+    <result column="opa" jdbcType="VARCHAR" property="opa" />
+    <result column="opb" jdbcType="VARCHAR" property="opb" />
+    <result column="opc" jdbcType="VARCHAR" property="opc" />
+    <result column="opd" jdbcType="VARCHAR" property="opd" />
+    <result column="fenxi" jdbcType="VARCHAR" property="fenxi" />
+    <result column="typeid" jdbcType="INTEGER" property="typeid" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="leixing" jdbcType="INTEGER" property="leixing" />
+    <result column="rc" jdbcType="INTEGER" property="rc" />
+    <result column="wc" jdbcType="INTEGER" property="wc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, daan, opa, opb, opc, opd, fenxi, typeid, img, leixing, rc, wc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wct_choose
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wct_choose
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideabobo.model.Choose">
+    insert into wct_choose (id, title, daan, 
+      opa, opb, opc, opd, 
+      fenxi, typeid, img, 
+      leixing, rc, wc)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{daan,jdbcType=VARCHAR}, 
+      #{opa,jdbcType=VARCHAR}, #{opb,jdbcType=VARCHAR}, #{opc,jdbcType=VARCHAR}, #{opd,jdbcType=VARCHAR}, 
+      #{fenxi,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, 
+      #{leixing,jdbcType=INTEGER}, #{rc,jdbcType=INTEGER}, #{wc,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideabobo.model.Choose">
+    insert into wct_choose
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="daan != null">
+        daan,
+      </if>
+      <if test="opa != null">
+        opa,
+      </if>
+      <if test="opb != null">
+        opb,
+      </if>
+      <if test="opc != null">
+        opc,
+      </if>
+      <if test="opd != null">
+        opd,
+      </if>
+      <if test="fenxi != null">
+        fenxi,
+      </if>
+      <if test="typeid != null">
+        typeid,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="leixing != null">
+        leixing,
+      </if>
+      <if test="rc != null">
+        rc,
+      </if>
+      <if test="wc != null">
+        wc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="daan != null">
+        #{daan,jdbcType=VARCHAR},
+      </if>
+      <if test="opa != null">
+        #{opa,jdbcType=VARCHAR},
+      </if>
+      <if test="opb != null">
+        #{opb,jdbcType=VARCHAR},
+      </if>
+      <if test="opc != null">
+        #{opc,jdbcType=VARCHAR},
+      </if>
+      <if test="opd != null">
+        #{opd,jdbcType=VARCHAR},
+      </if>
+      <if test="fenxi != null">
+        #{fenxi,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="leixing != null">
+        #{leixing,jdbcType=INTEGER},
+      </if>
+      <if test="rc != null">
+        #{rc,jdbcType=INTEGER},
+      </if>
+      <if test="wc != null">
+        #{wc,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideabobo.model.Choose">
+    update wct_choose
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="daan != null">
+        daan = #{daan,jdbcType=VARCHAR},
+      </if>
+      <if test="opa != null">
+        opa = #{opa,jdbcType=VARCHAR},
+      </if>
+      <if test="opb != null">
+        opb = #{opb,jdbcType=VARCHAR},
+      </if>
+      <if test="opc != null">
+        opc = #{opc,jdbcType=VARCHAR},
+      </if>
+      <if test="opd != null">
+        opd = #{opd,jdbcType=VARCHAR},
+      </if>
+      <if test="fenxi != null">
+        fenxi = #{fenxi,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="leixing != null">
+        leixing = #{leixing,jdbcType=INTEGER},
+      </if>
+      <if test="rc != null">
+        rc = #{rc,jdbcType=INTEGER},
+      </if>
+      <if test="wc != null">
+        wc = #{wc,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideabobo.model.Choose">
+    update wct_choose
+    set title = #{title,jdbcType=VARCHAR},
+      daan = #{daan,jdbcType=VARCHAR},
+      opa = #{opa,jdbcType=VARCHAR},
+      opb = #{opb,jdbcType=VARCHAR},
+      opc = #{opc,jdbcType=VARCHAR},
+      opd = #{opd,jdbcType=VARCHAR},
+      fenxi = #{fenxi,jdbcType=VARCHAR},
+      typeid = #{typeid,jdbcType=INTEGER},
+      img = #{img,jdbcType=VARCHAR},
+      leixing = #{leixing,jdbcType=INTEGER},
+      rc = #{rc,jdbcType=INTEGER},
+      wc = #{wc,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

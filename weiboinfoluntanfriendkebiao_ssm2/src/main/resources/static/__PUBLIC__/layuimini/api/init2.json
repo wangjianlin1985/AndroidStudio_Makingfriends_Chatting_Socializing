@@ -1,0 +1,34 @@
+{
+  "homeInfo": {
+    "title": "书籍查询",
+    "href": "book2.html"
+  },
+  "logoInfo": {
+    "title": "后台管理系统",
+    "image": "./__PUBLIC__/images/login/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "系统管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+
+        {
+          "title": "图书查询",
+          "href": "book2.html",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        },
+        {
+          "title": "借阅管理",
+          "href": "jieyue2.html",
+          "icon": "fa fa-file-text",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

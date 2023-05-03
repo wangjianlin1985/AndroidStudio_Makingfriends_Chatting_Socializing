@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <!--<meta name="format-detection" content="telephone=no"/>-->
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+    <meta name="viewport" content="width=400; user-scalable=no"/>
+   <!-- <link rel="stylesheet" type="text/css" href="jb/themes/jquery.mobile.structure-1.4.5.min.css"/>
+    <link rel="stylesheet" type="text/css" href="jb/themes/jquery.mobile.skyd-1.4.5.min.css"/>
+    <link rel="stylesheet" type="text/css" href="jb/themes/jquery.mobile.icons-1.4.5.min.css"/>-->
+    <link rel="stylesheet" type="text/css" href="jb/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/chatplugs.css"/>
+    <script type="text/javascript" src="jb/jquery.min.js"></script>
+    <script type="text/javascript" src="jb/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="jslib/jqueryform.js"></script>
+    <script type="text/javascript" src="jslib/hammer.js"></script>
+    <script type="text/javascript" src="js/commontools.js"></script>
+    <script type="text/javascript" src="js/jbtool.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="js/chatplugs.js"></script>
+    <script type="text/javascript" src="jslib/iscroll.js"></script>
+    <title>聊天</title>
+    <style type="text/css">
+        .mappointer{
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            background-size: 50px 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<form action="" method="post" enctype="multipart/form-data" id="uploadForm">
+    <input style="display: none;" id="selectimginput" onchange="showPicImg(this.files);" name="file" type="file"/>
+</form>
+<form action="" method="post" enctype="multipart/form-data" id="uploadForm2">
+    <input style="display: none;" id="selectimginput2" onchange="showPicImg2(this.files);" name="file" type="file"/>
+</form>
+
+
+
+<div data-role="page" data-theme="a" id="lastmessagepage">
+    <div  data-role="header" data-position="fixed">
+        <!--<h1 class="ui-title">
+            我的消息
+        </h1>
+        <a href="#" onclick="goback();" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+            返回
+        </a>-->
+        <div data-role="navbar">
+            <ul>
+                <li><a href="javascript:toMyFriend()();">我的好友</a></li>
+                <li><a href="javascript:toLastMessage();">我的消息</a></li>
+            </ul>
+        </div>
+    </div>
+    <div role="main" class="ui-content">
+
+        <ul id="mymessagelist" data-role="listview" data-theme="a" data-inset="true" data-split-icon="comment">
+
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
+<!------------------------------好友管理模块聊天------------------------------------------>
+<div data-role="page" data-theme="a" id="friendpage">
+    <div  data-role="header" data-position="fixed">
+        <!-- <h1 class="ui-title">
+             我的好友
+         </h1>
+
+         <a href="#" onclick="toSearchFriend();" class="ui-btn ui-btn-right ui-icon-plus ui-btn-icon-left">
+             查找
+         </a>
+         <a href="#" onclick="goback();" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+             返回
+         </a>-->
+        <div data-role="navbar">
+            <ul>
+                <li><a href="javascript:toMyFriend()();">我的好友</a></li>
+                <li><a href="javascript:toLastMessage();">我的消息</a></li>
+            </ul>
+        </div>
+    </div>
+    <div role="main" class="ui-content">
+
+        <ul id="myfriendlist" data-role="listview" data-theme="a" data-inset="true" data-split-icon="comment">
+
+        </ul>
+    </div>
+
+</div>
+
+
+<div data-role="page" data-theme="a" id="yzmessagelistpage">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <h1 class="ui-title">
+            验证消息
+        </h1>
+        <a href="#" onclick="goback();" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+            返回
+        </a>
+    </div>
+
+
+    <div role="main" class="ui-content">
+        <ul id="messagelist" data-filter="true" data-filter-placeholder="输入关键字..." data-role="listview" data-inset="true" >
+
+        </ul>
+    </div>
+
+</div>
+
+<div data-role="page" data-theme="a" data-control-title="Register" id="yzmsgdetailpage">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <h1 class="ui-title">
+            好友确认
+        </h1>
+        <a href="#" onclick="goback();" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+            返回
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-field-contain" data-controltype="textinput">
+            <label id="vusername4">
+
+            </label>
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <img src="" id="userimg" style="width: 50%;" alt="">
+        </div>
+
+        <div class="ui-field-contain" data-controltype="textinput">
+            <label id="vstatus">
+
+            </label>
+        </div>
+
+        <div id="opctn">
+            <a onclick="agree();" href="#" class="ui-btn">同意</a>
+            <a onclick="refuse();" href="#" class="ui-btn ui-btn-e">拒绝</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div data-role="page" data-theme="a" id="addfriendpage">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <h1 class="ui-title">
+            查找朋友
+        </h1>
+        <a href="#" onclick="goback();" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+            返回
+        </a>
+    </div>
+
+
+    <div role="main" class="ui-content">
+        <ul id="userlist" data-filter="true" data-filter-placeholder="输入关键字..." data-role="listview" data-inset="true" >
+
+        </ul>
+    </div>
+
+</div>
+
+
+
+<div data-role="page" data-theme="a" data-control-title="Register" id="userdetailpage">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="javascript:toMyFriend()();">我的好友</a></li>
+                <li><a href="javascript:toLastMessage();">我的消息</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div role="main" class="ui-content">
+        <div class="ui-field-contain" data-controltype="textinput">
+            <label id="vusername2">
+
+            </label>
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <img width="50%" id="vuserimg2">
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <label id="vbirth2">
+
+            </label>
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <label id="vsex2">
+
+            </label>
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <label id="vqq2">
+
+            </label>
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <a id="vemail2">
+
+            </a>
+        </div>
+
+        <div id="canadd">
+            <a href="#" onclick="addFriend();" class="ui-btn ui-btn-c">加为好友</a>
+            <a href="#" onclick="toChat(focususer.id,1);" class="ui-btn ui-btn-c">发送信息</a>
+        </div>
+        <div id="candelf">
+            <a href="#" onclick="toChat(focususer.id,1);" class="ui-btn ui-btn-c">发送信息</a>
+            <a href="#" onclick="delFriend();" class="ui-btn ui-btn-e">删除好友</a>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<!------------------------------好友管理模块结束------------------------------------------>
+<!--聊天页面-->
+<div data-role="page" data-theme="a" id="chatpage">
+   <div  data-role="header" data-position="fixed">
+       <div data-role="navbar">
+           <ul>
+               <li><a href="javascript:toMyFriend()();">我的好友</a></li>
+               <li><a href="javascript:toLastMessage();">我的消息</a></li>
+           </ul>
+       </div>
+    </div>
+    <div role="main" class="ui-content" data-role="none">
+
+        <div id="chatdiv" class="chatdiv">
+            <ul class="chatul" id="chatlist">
+
+            </ul>
+        </div>
+
+        <div class="footer" style="height: 60px;background-color: #ebecee;">
+            <textarea id="msgaarea" style="padding-right: 100px;"></textarea>
+            <a href="" onclick="sendMsg();" class="ui-btn ui-btn-right ui-corner-all">发送</a>
+            <div style="text-align: center;">
+                <div id="chatattach"></div>
+                <a href="#" onclick="getFileInput(this);">选择文件</a>
+            </div>
+            <!--<button id="recordbtn" data-mini="true" data-inline="true" class="ui-btn ui-corner-all">点击录音</button>
+            <button id="filebutton" data-mini="true" data-inline="true" class="ui-btn ui-corner-all">发送图片</button>-->
+        </div>
+        <!--<ul id="msglist" data-role="listview" data-inset="true" >
+
+        </ul>
+        <textarea id="chatcontent"></textarea>
+        <button onclick="sendMsg();" class="" style="float: right;" data-role-mini="true" data-inline="true" >发送</button>
+        <button onclick="sendMsg();" style="float: right;" data-role-mini="true" data-inline="true" >按住录音</button>
+        <button onclick="sendMsg();" style="float: right;" data-role-mini="true" data-inline="true" >选择图片</button>-->
+    </div>
+</div>
+<!------------------------------好友管理模块聊天------------------------------------------>
+
+
+
+
+
+
+
+
+
+
+
+<div data-role="page" data-control-title="imgshow" id="imgshow">
+    <div id="imgcontaner">
+        <img style="width: 100%;position: absolute;top: 0px;left: 0px" id="showimg">
+        <a href="#" onclick="goback();" data-icon="back" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+            返回
+        </a>
+    </div>
+</div>
+
+</body>
+<!--
+<script type="text/javascript" src="../cordova/cordova.js"></script>
+<script type="text/javascript" src="cordovatool/cordovatools.js"></script>-->
+</html>

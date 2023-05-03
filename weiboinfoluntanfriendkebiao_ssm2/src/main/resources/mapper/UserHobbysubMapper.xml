@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.UserHobbysubMapper">
+
+    <select id="listByUserid" resultType="com.ideabobo.model.UserHobbysub" >
+        select
+            a.id,
+            a.userid,
+            b.username,
+            a.hobbysubid,
+            c.name as hobbysubname
+        from wct_user_hobbysub a
+            left join wct_user b on a.userid = b.id
+            left join wct_hobbysub c on a.hobbysubid = c.id
+        where a.userid = #{userid}
+    </select>
+
+    <select id="listBySubid" resultType="com.ideabobo.model.UserHobbysub" >
+        select
+            a.id,
+            a.userid,
+            b.username,
+            a.hobbysubid,
+            c.name as hobbysubname
+        from wct_user_hobbysub a
+                 left join wct_user b on a.userid = b.id
+                 left join wct_hobbysub c on a.hobbysubid = c.id
+        where a.hobbysubid = #{hobbysubid}
+    </select>
+
+    <insert id="add">
+        insert into wct_user_hobbysub (userid,hobbysubid) values (#{userid},#{hobbysubid})
+    </insert>
+
+    <delete id="deleteByUserid">
+        delete from wct_user_hobbysub where userid = #{userid}
+    </delete>
+
+</mapper>

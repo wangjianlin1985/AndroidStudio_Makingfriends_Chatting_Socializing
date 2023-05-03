@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./__PUBLIC__/layuimini/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="./__PUBLIC__/layuimini/css/public.css" media="all">
+    <script src="./__PUBLIC__/layuimini/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./__PUBLIC__/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./__PUBLIC__/js/common.js"></script>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" id="uploadForm">
+    <input style="display: none;" id="selectimginput" onchange="showPicImg(this.files);" name="file" type="file"/>
+</form>
+<form action="" method="post" enctype="multipart/form-data" id="uploadForm2">
+    <input style="display: none;" id="selectimginput2" onchange="showPicImg2(this.files);" name="file" type="file"/>
+</form>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" lay-filter="searchfrom" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">标题</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="title" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary" lay-submit
+                                    lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <script type="text/html" id="grid1toolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加</button>
+                <!--<button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除</button>-->
+            </div>
+        </script>
+
+        <table class="layui-hide" id="grid1Id" lay-filter="grid1"></table>
+
+        <script type="text/html" id="grid1Bar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-replay" lay-event="replay">回复</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+
+        <form id="managerform" style="display: none;" class="layui-form layuimini-form" lay-filter="managerform">
+            <input type="hidden" name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" lay-verify="required" lay-reqtext="用户名不能为空" placeholder="请输入用户名"
+                           value="" class="layui-input">
+                    <tip></tip>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div style="text-align: center;">
+                    <div style="text-align: center;"></div>
+                    <a href="#" onclick="getFileInput(this);">选择封面</a>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">内容</label>
+                <div class="layui-input-block">
+                    <textarea name="note" class="layui-textarea" placeholder="请输入备注信息"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <a class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</a>
+                </div>
+            </div>
+        </form>
+
+
+        <div style="display: none;" id="grid2ctn">
+            <fieldset class="table-search-fieldset">
+                <legend>搜索信息</legend>
+                <div style="margin: 10px 10px 10px 10px">
+                    <form class="layui-form layui-form-pane" lay-filter="searchfrom2" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">标题</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="note" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <button type="submit" class="layui-btn layui-btn-primary" lay-submit
+                                        lay-filter="data-search-btn2"><i class="layui-icon"></i> 搜 索
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </fieldset>
+
+            <script type="text/html" id="grid2toolbar">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">回复</button>
+                    <!--<button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除</button>-->
+                </div>
+            </script>
+
+            <table class="layui-hide" id="grid2Id" lay-filter="grid2"></table>
+
+            <script type="text/html" id="grid2Bar">
+                <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+            </script>
+        </div>
+
+        <form id="managerform2" style="display: none;" class="layui-form layuimini-form" lay-filter="managerform2">
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">内容</label>
+                <div class="layui-input-block">
+                    <textarea name="note" class="layui-textarea" placeholder="请输入备注信息"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <a class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn2">确认保存</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+</div>
+
+<script>
+
+
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            table = layui.table;
+
+
+        var managedialogindex;
+        var managedialogindex2;
+        var grid2dialogindex;
+        var grid1;
+        var grid2;
+        var focusobj;
+
+
+
+
+
+        grid1 = table.render({
+            elem: '#grid1Id',
+            url: clientUrl+"listPage?table=posts",
+            toolbar: '#grid1toolbar',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                //{type: "checkbox", width: 50},
+                {field: 'title', minwidth: 100, title: '标题'},
+                {field: 'username', minwidth: 100, title: '所属用户'},
+                {field: 'note', minwidth: 100, title: '内容'},
+                {field: 'ndate', minwidth: 100, title: '时间'},
+                {title: '操作', minwidth: 50, toolbar: '#grid1Bar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line',
+            response: {
+                    statusName: 'code' //规定数据状态的字段名称，默认：code
+                    //,statusCode: 200 //规定成功的状态码，默认：0
+                    //,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                    ,countName: 'total' //规定数据总数的字段名称，默认：count
+                    ,dataName: 'rows' //规定数据列表的字段名称，默认：data
+                  },
+            request: {
+                pageName: 'page', //页码的参数名称，默认：page
+                limitName: 'rows' //每页数据量的参数名，默认：limit
+            }
+        });
+
+
+        grid2 = table.render({
+            elem: '#grid2Id',
+            url: '',
+            toolbar: '#grid2toolbar',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                //{type: "checkbox", width: 50},
+                {field: 'note', minwidth: 200, title: '内容'},
+                {field: 'username', minwidth: 100, title: '用户'},
+                {field: 'ndate', minwidth: 100, title: '时间'},
+                {title: '操作', minwidth: 50, toolbar: '#grid2Bar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line',
+            response: {
+                    statusName: 'code' //规定数据状态的字段名称，默认：code
+                    //,statusCode: 200 //规定成功的状态码，默认：0
+                    //,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                    ,countName: 'total' //规定数据总数的字段名称，默认：count
+                    ,dataName: 'rows' //规定数据列表的字段名称，默认：data
+                  },
+            request: {
+                pageName: 'page', //页码的参数名称，默认：page
+                limitName: 'rows' //每页数据量的参数名，默认：limit
+            }
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var searchobj =data.field;
+            /*layer.alert(result, {
+                title: '最终的搜索信息'
+            });*/
+
+            //执行搜索重载
+            table.reload('grid1Id', {
+                page: {
+                    curr: 1
+                }
+                , where: searchobj
+            }, 'data');
+
+            return false;
+        });
+
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn2)', function (data) {
+            var searchobj =data.field;
+            /*layer.alert(result, {
+                title: '最终的搜索信息'
+            });*/
+
+            //执行搜索重载
+            table.reload('grid2Id', {
+                page: {
+                    curr: 1
+                }
+                , where: searchobj
+            }, 'data');
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(grid1)', function (obj) {
+            if (obj.event === 'add') {  // 监听添加操作
+                $("#managerform")[0].reset();
+                managedialogindex = layer.open({
+                    title: '编辑数据',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['90%', '90%'],
+                    content: $('#managerform')
+                });
+                $(window).on("resize", function () {
+                    layer.full(managedialogindex);
+                });
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('grid1Id')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        form.on('submit(saveBtn)', function (formobj) {
+            /*var index = layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            }, function () {
+                layer.close(index);
+            });*/
+            var fdata = formobj.field;
+            fdata.table="posts";
+            ajaxFormUploadFile(function (ir){
+                fdata.img = ir;
+                ajaxCallback1("save",fdata,function (sr) {
+                    layer.close(managedialogindex);
+                    grid1.reload();
+                });
+            });
+
+            return false;
+        });
+
+
+        form.on('submit(saveBtn2)', function (formobj) {
+            /*var index = layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            }, function () {
+                layer.close(index);
+            });*/
+            var fdata = formobj.field;
+            fdata.table="replay";
+            fdata.pid = focusobj.id;
+            ajaxCallback1("save",fdata,function () {
+                layer.close(managedialogindex2);
+                grid2.reload();
+            });
+            return false;
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(grid1)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(grid1)', function (obj) {
+            var data = obj.data;
+            var uuid = data.id;
+            focusobj = data;
+            if (obj.event === 'edit') {
+
+                managedialogindex = layer.open({
+                    title: '编辑用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['90%', '90%'],
+                    content: $('#managerform')
+                });
+                $(window).on("resize", function () {
+                    layer.full(managedialogindex);
+                });
+
+                form.val("managerform",data);
+
+                return false;
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+
+                    $.post(clientUrl+"delete", {table:"posts",id: uuid}, function (data) {
+                        obj.del();
+                        layer.close(index);
+                    });
+
+                });
+            } else if (obj.event === 'replay') {
+                grid2dialogindex = layer.open({
+                    title: '查看回复',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['90%', '90%'],
+                    content: $('#grid2ctn')
+                });
+
+                table.reload('grid2Id', {
+                    url:__APP__+'database/listPage?table=replay',
+                    page: {
+                        curr: 1
+                    }
+                    , where: {pid:uuid}
+                }, 'data');
+
+            }
+        });
+
+        table.on('toolbar(grid2)', function (obj) {
+            if (obj.event === 'add') {  // 监听添加操作
+                $("#managerform2")[0].reset();
+                managedialogindex2 = layer.open({
+                    title: '添加回复',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['80%', '80%'],
+                    content: $('#managerform2')
+                });
+                $(window).on("resize", function () {
+                    layer.full(managedialogindex2);
+                });
+            }
+        });
+
+        table.on('tool(grid2)', function (obj) {
+            var data = obj.data;
+            var uuid = data.id;
+            if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    $.post(clientUrl+"delete", {table:"replay",id: uuid}, function (data) {
+                        obj.del();
+                        //grid2.reload();
+                        layer.close(index);
+                    });
+
+                });
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

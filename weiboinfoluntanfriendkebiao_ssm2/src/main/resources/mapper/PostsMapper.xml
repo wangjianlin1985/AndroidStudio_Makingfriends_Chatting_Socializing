@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.PostsMapper">
+  <resultMap id="BaseResultMap" type="com.ideabobo.model.Posts">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note2" jdbcType="VARCHAR" property="note2" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="ndate" jdbcType="VARCHAR" property="ndate" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="statecn" jdbcType="VARCHAR" property="statecn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, note, note2, uid, username, ndate, img, type, statecn
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wct_posts
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wct_posts
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideabobo.model.Posts">
+    insert into wct_posts (id, title, note, 
+      note2, uid, username, 
+      ndate, img, type, statecn
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{note2,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{ndate,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{statecn,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideabobo.model.Posts">
+    insert into wct_posts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="note2 != null">
+        note2,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="ndate != null">
+        ndate,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="statecn != null">
+        statecn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        #{note2,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="statecn != null">
+        #{statecn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideabobo.model.Posts">
+    update wct_posts
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        note2 = #{note2,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        ndate = #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="statecn != null">
+        statecn = #{statecn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideabobo.model.Posts">
+    update wct_posts
+    set title = #{title,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      note2 = #{note2,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      ndate = #{ndate,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      statecn = #{statecn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

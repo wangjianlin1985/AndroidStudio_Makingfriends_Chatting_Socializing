@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.BillMapper">
+  <resultMap id="BaseResultMap" type="com.ideabobo.model.Bill">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="gids" jdbcType="VARCHAR" property="gids" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="shop" jdbcType="VARCHAR" property="shop" />
+    <result column="bill" jdbcType="VARCHAR" property="bill" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="ndate" jdbcType="VARCHAR" property="ndate" />
+    <result column="total" jdbcType="VARCHAR" property="total" />
+    <result column="way" jdbcType="VARCHAR" property="way" />
+    <result column="gnames" jdbcType="VARCHAR" property="gnames" />
+    <result column="sid" jdbcType="VARCHAR" property="sid" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="statecn" jdbcType="VARCHAR" property="statecn" />
+    <result column="cuidan" jdbcType="VARCHAR" property="cuidan" />
+    <result column="qid" jdbcType="INTEGER" property="qid" />
+    <result column="qusername" jdbcType="VARCHAR" property="qusername" />
+    <result column="qtel" jdbcType="VARCHAR" property="qtel" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, gids, price, user, uid, shop, bill, openid, ndate, total, way, gnames, sid, tel, 
+    address, note, state, statecn, cuidan, qid, qusername, qtel, img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wct_bill
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wct_bill
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideabobo.model.Bill">
+    insert into wct_bill (id, gids, price, 
+      user, uid, shop, bill, 
+      openid, ndate, total, 
+      way, gnames, sid, tel, 
+      address, note, state, 
+      statecn, cuidan, qid, 
+      qusername, qtel, img
+      )
+    values (#{id,jdbcType=INTEGER}, #{gids,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
+      #{user,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{shop,jdbcType=VARCHAR}, #{bill,jdbcType=VARCHAR}, 
+      #{openid,jdbcType=VARCHAR}, #{ndate,jdbcType=VARCHAR}, #{total,jdbcType=VARCHAR}, 
+      #{way,jdbcType=VARCHAR}, #{gnames,jdbcType=VARCHAR}, #{sid,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{statecn,jdbcType=VARCHAR}, #{cuidan,jdbcType=VARCHAR}, #{qid,jdbcType=INTEGER}, 
+      #{qusername,jdbcType=VARCHAR}, #{qtel,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideabobo.model.Bill">
+    insert into wct_bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gids != null">
+        gids,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="shop != null">
+        shop,
+      </if>
+      <if test="bill != null">
+        bill,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="ndate != null">
+        ndate,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="way != null">
+        way,
+      </if>
+      <if test="gnames != null">
+        gnames,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="statecn != null">
+        statecn,
+      </if>
+      <if test="cuidan != null">
+        cuidan,
+      </if>
+      <if test="qid != null">
+        qid,
+      </if>
+      <if test="qusername != null">
+        qusername,
+      </if>
+      <if test="qtel != null">
+        qtel,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gids != null">
+        #{gids,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="shop != null">
+        #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="bill != null">
+        #{bill,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=VARCHAR},
+      </if>
+      <if test="way != null">
+        #{way,jdbcType=VARCHAR},
+      </if>
+      <if test="gnames != null">
+        #{gnames,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="statecn != null">
+        #{statecn,jdbcType=VARCHAR},
+      </if>
+      <if test="cuidan != null">
+        #{cuidan,jdbcType=VARCHAR},
+      </if>
+      <if test="qid != null">
+        #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="qusername != null">
+        #{qusername,jdbcType=VARCHAR},
+      </if>
+      <if test="qtel != null">
+        #{qtel,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideabobo.model.Bill">
+    update wct_bill
+    <set>
+      <if test="gids != null">
+        gids = #{gids,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="shop != null">
+        shop = #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="bill != null">
+        bill = #{bill,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        ndate = #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=VARCHAR},
+      </if>
+      <if test="way != null">
+        way = #{way,jdbcType=VARCHAR},
+      </if>
+      <if test="gnames != null">
+        gnames = #{gnames,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="statecn != null">
+        statecn = #{statecn,jdbcType=VARCHAR},
+      </if>
+      <if test="cuidan != null">
+        cuidan = #{cuidan,jdbcType=VARCHAR},
+      </if>
+      <if test="qid != null">
+        qid = #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="qusername != null">
+        qusername = #{qusername,jdbcType=VARCHAR},
+      </if>
+      <if test="qtel != null">
+        qtel = #{qtel,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideabobo.model.Bill">
+    update wct_bill
+    set gids = #{gids,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      user = #{user,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      shop = #{shop,jdbcType=VARCHAR},
+      bill = #{bill,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      ndate = #{ndate,jdbcType=VARCHAR},
+      total = #{total,jdbcType=VARCHAR},
+      way = #{way,jdbcType=VARCHAR},
+      gnames = #{gnames,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      statecn = #{statecn,jdbcType=VARCHAR},
+      cuidan = #{cuidan,jdbcType=VARCHAR},
+      qid = #{qid,jdbcType=INTEGER},
+      qusername = #{qusername,jdbcType=VARCHAR},
+      qtel = #{qtel,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

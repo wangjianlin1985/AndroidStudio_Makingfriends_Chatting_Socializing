@@ -1,0 +1,20 @@
+[{
+		"id" : "1",
+		"text" : "图书管理",
+		"href" : "http://localhost/thinksep/index.php/Goods/goods",
+		"icon" : "../../Public/easyui/themes/windows/icons/goods.png",
+		"cnf":{
+
+		}
+	}, {
+		"id" : "2",
+		"text" : "用户管理",
+		"href" : "http://localhost/thinksep/index.php/User/user",
+		"icon" : "../../Public/easyui/themes/windows/icons/user.png"
+	}, {
+		"id" : "3",
+		"text" : "售后异常记录",
+		"href" : "http://localhost/thinksep/index.php/Aftersall/aftersall",
+		"icon" : "../../Public/easyui/themes/windows/icons/aftersall.png"
+	}
+]

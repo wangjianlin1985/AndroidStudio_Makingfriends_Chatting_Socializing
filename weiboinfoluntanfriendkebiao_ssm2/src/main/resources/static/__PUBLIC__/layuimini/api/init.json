@@ -1,0 +1,64 @@
+{
+  "homeInfo": {
+    "title": "用户管理",
+    "href": "user.html"
+  },
+  "logoInfo": {
+    "title": "后台管理系统",
+    "image": "./__PUBLIC__/images/login/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "系统管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+
+        {
+          "title": "用户管理",
+          "href": "user.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "动态信息管理",
+          "href": "blog.html",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "type.html",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        },
+        {
+          "title": "资讯新闻",
+          "href": "notice.html",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        },
+        {
+          "title": "交流讨论",
+          "href": "postsreplay.html",
+          "icon": "fa fa-file-text",
+          "target": "_self"
+        },
+        {
+          "title": "爱好分类",
+          "href": "hobby.html",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        },
+        {
+          "title": "爱好子分类",
+          "href": "hobbysub.html",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,733 @@
+
+.ideaheader{
+    background-color: rgba(255,255,255,0.5) !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: 1px #ddd solid !important;
+}
+.ideaheader .ui-btn{
+    background-color: rgba(255,255,255,0.1) !important;
+    color: #333 !important;
+    border: none !important;
+}
+.ideaheader h1{
+    color: #666 !important;
+}
+
+.ideafooter{
+    background-color: #f9f9f9 !important;
+    border-top: none !important;
+    background-color: rgba(255,255,255,0.5) !important;
+}
+
+.ideafooter ul{
+
+}
+.ideafooter ul li{
+
+}
+.ideafooter ul li a{
+    color: #666 !important;
+    border: none !important;
+    background: rgba(255,255,255,0.5) !important;
+}
+
+.ideapage{
+    background-color: #fff !important;
+    background-image: url(../images/bg2.jpg) !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+}
+
+
+
+
+.maintable{
+    width: 100%;
+
+}
+.maintable th{
+    width: 25%;
+    text-align: center;
+}
+.maintable td{
+    width: 25%;
+    text-align: center;
+}
+
+
+
+.maintable2{
+    width: 100%;
+
+}
+.maintable2 th{
+    width: 33%;
+    text-align: center;
+}
+.maintable2 td{
+    width: 33%;
+    text-align: center;
+}
+
+
+.fsxul{
+    padding: 0;margin: 0;
+    border: 1px #666 solid;
+}
+.fsxul li{
+    padding: 5px;
+}
+.fsxul span{
+    display: inline-block;
+    width: 33%;
+}
+
+.fsxul a{
+    display: inline-block;
+    text-align: center;
+    margin-left: 5px;
+}
+
+
+
+#goods{
+    padding: 0;
+}
+.gitem {
+    width: 152px;
+    float: left;
+    text-align: center;
+    margin: 10px 0 0 10px;
+    list-style: none;
+
+}
+
+.gitem div{
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+    position: relative;
+    border: 1px #aaaaaa solid;
+    background-color: #ffffff;
+    text-align: left;
+}
+.gitem h2{
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    color: #111111;
+}
+.gitem p{
+    font-size: 10px;
+    color: #980000;
+    padding: 0;
+    margin: 5px;
+}
+.gitem img{
+    width: 100%;
+    height: 100px;
+}
+
+
+
+.starcontainer2{
+    width: 175px;
+    height: 35px;
+    position: absolute;
+    left: 100px;
+    top: 5px;
+}
+
+
+.pingjiastar2{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 35px;
+    width: 175px;
+    background-image: url('../images/detail_star_open.png');
+    z-index: 0;
+}
+
+.pingjiastarup2{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 35px;
+    background-image: url('../images/detail_star_full.png');
+    z-index: 1;
+}
+
+.pingjiastarclick{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 35px;
+    width: 175px;
+    z-index: 999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+
+#maincontainer{
+    position: absolute;
+    height: 1280px;
+    overflow: hidden;
+    width: 720px;
+    margin:0;
+    padding:0;
+}
+.page{
+    position: absolute;
+    height: 1280px;
+    width: 720px;
+    margin:0;
+    padding:0;
+    display: none;
+
+}
+.logindiv{
+    background-image: url('../images/loginback.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.loginimg{
+    position: absolute;
+    height: 190px;
+    width: 190px;
+    top: 300px;
+    left: 265px;
+    background-image: url('../images/gco.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.logininput{
+    position: absolute;
+    height: 90px;
+    width: 720px;
+    top: 500px;
+    left: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-size: 30pt;
+    padding-left: 40px;
+    outline:none;
+}
+.loginbutton{
+    position: absolute;
+    height: 90px;
+    width: 660px;
+    top: 720px;
+    left: 31px;
+    background: #1fbaf3;
+    color: #ffffff;
+    font-size: 30pt;
+    border-radius: 10px;
+    border: 0;
+}
+.redbutton{
+    background: #fb5f53;
+}
+.blackback{
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    height: 1280px;
+    width: 720px;
+    left:0;
+    top:0;
+    z-index: 99;
+}
+.loginloading{
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    height: 85px;
+    width: 680px;
+    left:20px;
+    top:60px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25pt;
+    line-height: 85px;
+    z-index: 100;
+}
+.loginloading span{
+    margin-left: 20px;
+}
+.loginloading img{
+    position: relative;
+    top: 5px;
+}
+
+.newuser{
+    color: #00aeef;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.registerinput{
+    position: absolute;
+    height: 90px;
+    width: 600px;
+    top: 500px;
+    left: 40px;
+    font-size: 30pt;
+    padding-left: 40px;
+    outline:none;
+}
+.imputdiv{
+    background-color: #ffffff;
+    position: absolute;
+    height: 90px;
+    width: 600px;
+    left: 40px;
+    border: 1px #aaaaaa solid;
+    padding-left: 40px;
+    line-height: 90px;
+    font-size: 30pt;
+}
+.imputdiv input{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 15px;
+}
+.newtitle{
+    padding: 20px;
+    text-align: center;
+    color: #00aeef;
+    font-size: 30pt;
+    font-weight: bold;
+}
+.regimg{
+    width: 200px;height: 200px;
+    position: absolute;
+    top: 80px;
+    left: 260px;
+}
+.titlebar{
+    background-color: #18b4ed;
+    height: 150px;
+    width: 720px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    color: #ffffff;
+}
+.titlebar h1{
+    position: relative;
+    top: 50px;
+    font-size: 32pt;
+    font-weight: normal;
+}
+.tbtn{
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    font-size: 25pt;
+    color: #ffffff;
+}
+.tbtn-left{
+    left: 15px;
+}
+.tbtn-right{
+    left: 640px;
+}
+.imfoimg{
+    position: absolute;
+    left: 20px;
+    top: 70px;
+    width: 60px;
+    height: 60px;
+}
+.mainpage{
+    background-color: #ebeced;
+}
+.mainsearch{
+    position: absolute;
+    height: 70px;
+    top:165px;
+    width: 660px;
+    left: 20px;
+    border-radius: 15px;
+    outline: none;
+    border: 0;
+    font-size: 25pt;
+    padding-left: 20px;
+}
+.listcontainer{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 720px;
+    height:910px;
+    left: 0;
+    top: 245px;
+    list-style: none;
+    overflow: hidden;
+}
+.listul{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 720px;
+    left: 0;
+    top: 0;
+    list-style: none;
+}
+.item1{
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    height: 125px;
+    width: 720px;
+    border-bottom: 1px #dfdfe0 solid;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    text-align: -webkit-match-parent;
+}
+.item1 img{
+    width:106px;
+    height: 106px;
+    border-radius: 53px;
+    position: relative;
+    top: 10px;
+    left: 20px;
+    display: inline-block;
+}
+.item1 h1{
+    margin: 0;
+    padding: 0;
+    width:450px;
+    height: 35px;
+    position: relative;
+    top: -80px;
+    left: 140px;
+    font-size: 25pt;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #040404;
+}
+.item1 p{
+    padding: 0;
+    margin: 0;
+    width:550px;
+    height: 35px;
+    position: relative;
+    top: -70px;
+    left: 140px;
+    font-size: 20pt;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #c4c4c4;
+}
+.rightconer{
+    padding: 0;
+    margin: 0;
+    width:150px !important;
+    height: 35px !important;
+    position: relative;
+    top: -150px !important;
+    left: 550px !important;;
+    font-size: 20pt !important;;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+.imgctn{
+    width: 100px;
+    height: 200px;
+    background-size: 100% 100%;
+}
+
+.footer{
+    height: 60px;
+    position: absolute;
+    width: 400px;
+    left: 0;
+    bottom: 0;
+    border-top: 2px #c4c4c4 solid;
+}
+.navdiv{
+    height: 123px;
+    position: absolute;
+    width: 240px;
+    left: 0;
+    bottom: 0;
+}
+.navmsgblur{
+    left: 0;
+    background-image: url('../images/msgblur.png');
+}
+.navmsgfocus{
+    background-image: url('../images/msgfocus.png') !important;
+}
+.navfriendblur{
+    left: 240px;
+    background-image: url('../images/friendblur.png');
+}
+.navfriendfocus{
+    background-image: url('../images/friendfocus.png') !important;
+}
+.navdongtaiblur{
+    left: 480px;
+    background-image: url('../images/donttaiblur.png');
+}
+.navdongtaifocus{
+    background-image: url('../images/donttaifocus.png') !important;
+}
+.fullinput{
+    outline: none;
+    width: 720px;
+    position: absolute;
+    height: 70px;
+    top:150px;
+    left: 0;
+    border: 0;
+    font-size: 25pt;
+    padding-left: 20px;
+}
+.topback{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 470px;
+    width: 720px;
+    background-image: url("../images/infoback.jpg");
+}
+
+.footeraddbtn{
+    position: absolute;
+    width: 720px;
+    height: 90px;
+    left: 0;
+    bottom: 0;
+    background-image: url(../images/addbutton.png);
+}
+.footerlogoutbtn{
+    position: absolute;
+    width: 720px;
+    height: 90px;
+    left: 0;
+    bottom: 20px;
+}
+.infophoto{
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    top: 400px;
+    left: 30px;
+}
+.friendinfocontainer{
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 490px;
+    padding: 0;
+    margin: 0;
+}
+.nophotolist{
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 720px;
+}
+.nophotolist li{
+    padding-left: 50px;
+    height: 135px;
+    line-height: 135px;
+    font-size: 35px;
+    border-bottom: 1px #c4c4c4 solid;
+}
+.chatpage{
+    background-image: url("../images/chatback.jpg") !important;
+}
+.record{
+    height: 65px;
+    width: 100px;
+    position: absolute;
+    left: 13px;
+    top:18px;
+    background-image: url("../images/record.png");
+    background-repeat: no-repeat;
+    background-position: 15px 2px;
+    border-radius: 10px;
+    border: 1px #cccccc solid;
+}
+.fbtn{
+    height: 65px;
+    width: 65px;
+    position: absolute;
+    left: 120px;
+    top:18px;
+    border-radius: 33px;
+    border: 1px #cccccc solid;
+}
+.fbtn span{
+    font-size: 60pt;
+    position: relative;
+    left: 9px;
+    top:-17px;
+    color: #777777;
+}
+.msgaarea{
+    height: 45px;
+    width: 370px;
+    position: absolute;
+    left: 200px;
+    top:18px;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    font-size: 25pt;
+}
+
+.send{
+    height: 65px;
+    width: 100px;
+    position: absolute;
+    left: 600px;
+    top:18px;
+    border-radius: 10px;
+    border: 1px #cccccc solid;
+    font-size: 35px;
+    line-height: 65px;
+    text-align: center;
+    color: #757677;
+}
+.chatdiv{
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    left: 0;
+    top: 40px;
+    overflow: hidden;
+}
+.chatul{
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+
+}
+.citemto{
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    text-align: right;
+
+}
+
+.citemto div{
+    margin-left: 100px;
+
+}
+.citemto img{
+    width: 45px;
+    height: 45px;
+    margin-right: 5px;
+    position: relative;
+    left: 230px;
+}
+.citemto p{
+    display: inline-block;
+    background-color: #18b4ed;
+    width: 230px;
+    position: relative;
+    top: -10px;
+    left: -100px;
+    border-radius: 10px;
+    padding: 10px;
+    color: #ffffff;
+    text-align: left;
+    font-size: 18pt;
+}
+
+.citemfrom{
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    text-align: left;
+}
+.citemfrom div{
+    margin-right: 100px;
+
+}
+.citemfrom img{
+    width: 45px;
+    height: 45px;
+    margin-left: 5px;
+    position: relative;
+    top: 60px;
+}
+.citemfrom p{
+    display: inline-block;
+    background-color: #eeeeee;
+    width: 230px;
+    margin-left: 80px;
+    position: relative;
+    top: -10px;
+    border-radius: 10px;
+    padding: 10px;
+    color: #000000;
+    font-size: 18pt;
+}
+
+.citemfrom auto{
+    display: inline-block;
+    background-color: #eeeeee;
+    width: 400px;
+    margin-left: 20px;
+    position: relative;
+    top: -30px;
+    border-radius: 10px;
+    padding: 20px;
+    color: #000000;
+    font-size: 26pt;
+}
+
+.aboutp{
+    width: 100%;
+}
+.aboutp p{
+    width: 400px;
+    display: block;
+    text-align: center;
+    margin: 20px 0 0 0;
+    font-size: 3rem;
+}

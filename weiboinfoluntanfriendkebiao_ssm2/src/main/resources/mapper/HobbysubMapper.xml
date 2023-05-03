@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.HobbysubMapper">
+
+    <select id="listAll"  resultType="com.ideabobo.model.Hobbysub" >
+        select
+            a.id,
+            a.name,
+            a.hobbyid as "hobbyid",
+            b.name as "hobbyname"
+        from  wct_hobbysub a left join wct_hobby b on a.hobbyid = b.id
+    </select>
+
+    <select id="getById" resultType="com.ideabobo.model.Hobbysub" >
+        select
+            a.id,
+            a.name,
+            a.hobbyid as "hobbyid",
+            b.name as "hobbyname"
+        from  wct_hobbysub a left join wct_hobby b on a.hobbyid = b.id where a.id = #{id}
+    </select>
+
+    <select id="listByHobbyId" resultType="com.ideabobo.model.Hobbysub" >
+        select
+            a.id,
+            a.name,
+            a.hobbyid as "hobbyid",
+            b.name as "hobbyname"
+        from  wct_hobbysub a left join wct_hobby b on a.hobbyid = b.id where a.hobbyid = #{hobbyid}
+    </select>
+
+
+    <insert id="add">
+        insert into wct_hobbysub (name,hobbyid,hobbyname) values (#{name},#{hobbyid},#{hobbyname})
+    </insert>
+
+    <update id="update">
+        update wct_hobbysub set name = #{name} where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from wct_hobbysub where id = #{id}
+    </delete>
+
+
+</mapper>

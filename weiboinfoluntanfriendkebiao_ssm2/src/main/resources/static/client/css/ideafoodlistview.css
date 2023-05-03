@@ -1,0 +1,25 @@
+.ideafoodlist{
+    margin: 0;
+    padding: 0;
+}
+.ideafoodlist li{
+    width: calc(100% - 12px);padding:6px;background-color: rgba(255,255,255,0.5);float: left;border-bottom: 1px #dddddd solid;
+}
+.ideafoodlist h2{
+    display: inline-block;width: 60%;margin: 5px 0 5px 5%;padding: 0;clear: right;color: #333333;font-size: 18px;
+}
+.ideafoodlist p{
+    padding: 0;width: 60%;overflow:hidden;display:block;margin: 0 0 5px 5%;float:left;color: #333333;font-size: 12px;font-weight: lighter;
+}
+.previewimg{
+    width: 30%;float: left;
+}
+.countopreadiv{
+    width: 110px;height: 30px;float: right;overflow: hidden;text-align: center;
+}
+.countopreadiv img{
+    width: 30px;height: 30px;
+}
+.countopreadiv input{
+    height: 20px;width: 15px;outline: none;position: relative;top: -9px;display: inline-block;text-align: center;
+}

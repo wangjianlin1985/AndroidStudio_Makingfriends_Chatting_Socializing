@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.MessageMapper">
+  <resultMap id="BaseResultMap" type="com.ideabobo.model.Message">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="qid" jdbcType="INTEGER" property="qid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="zan" jdbcType="INTEGER" property="zan" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="ndate" jdbcType="VARCHAR" property="ndate" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="fusername" jdbcType="VARCHAR" property="fusername" />
+    <result column="attach" jdbcType="VARCHAR" property="attach" />
+    <result column="attachname" jdbcType="VARCHAR" property="attachname" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, fid, qid, type, zan, note, ndate, username, fusername, attach, attachname, 
+    img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wct_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wct_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideabobo.model.Message">
+    insert into wct_message (id, uid, fid, 
+      qid, type, zan, note, 
+      ndate, username, fusername, 
+      attach, attachname, img
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, 
+      #{qid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{zan,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, 
+      #{ndate,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{fusername,jdbcType=VARCHAR}, 
+      #{attach,jdbcType=VARCHAR}, #{attachname,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideabobo.model.Message">
+    insert into wct_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="qid != null">
+        qid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="zan != null">
+        zan,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="ndate != null">
+        ndate,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="fusername != null">
+        fusername,
+      </if>
+      <if test="attach != null">
+        attach,
+      </if>
+      <if test="attachname != null">
+        attachname,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="qid != null">
+        #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null">
+        #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="fusername != null">
+        #{fusername,jdbcType=VARCHAR},
+      </if>
+      <if test="attach != null">
+        #{attach,jdbcType=VARCHAR},
+      </if>
+      <if test="attachname != null">
+        #{attachname,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideabobo.model.Message">
+    update wct_message
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="qid != null">
+        qid = #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null">
+        zan = #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        ndate = #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="fusername != null">
+        fusername = #{fusername,jdbcType=VARCHAR},
+      </if>
+      <if test="attach != null">
+        attach = #{attach,jdbcType=VARCHAR},
+      </if>
+      <if test="attachname != null">
+        attachname = #{attachname,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideabobo.model.Message">
+    update wct_message
+    set uid = #{uid,jdbcType=INTEGER},
+      fid = #{fid,jdbcType=INTEGER},
+      qid = #{qid,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      zan = #{zan,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR},
+      ndate = #{ndate,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      fusername = #{fusername,jdbcType=VARCHAR},
+      attach = #{attach,jdbcType=VARCHAR},
+      attachname = #{attachname,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

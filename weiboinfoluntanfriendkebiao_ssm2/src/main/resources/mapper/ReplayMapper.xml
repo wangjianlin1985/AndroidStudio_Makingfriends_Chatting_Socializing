@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ideabobo.service.ReplayMapper">
+  <resultMap id="BaseResultMap" type="com.ideabobo.model.Replay">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="ndate" jdbcType="VARCHAR" property="ndate" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="ttype" jdbcType="VARCHAR" property="ttype" />
+    <result column="hot" jdbcType="INTEGER" property="hot" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, note, uid, username, ndate, type, ttype, hot
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wct_replay
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wct_replay
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideabobo.model.Replay">
+    insert into wct_replay (id, pid, note, 
+      uid, username, ndate, 
+      type, ttype, hot)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{ndate,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{ttype,jdbcType=VARCHAR}, #{hot,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideabobo.model.Replay">
+    insert into wct_replay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="ndate != null">
+        ndate,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="ttype != null">
+        ttype,
+      </if>
+      <if test="hot != null">
+        hot,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="ttype != null">
+        #{ttype,jdbcType=VARCHAR},
+      </if>
+      <if test="hot != null">
+        #{hot,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideabobo.model.Replay">
+    update wct_replay
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ndate != null">
+        ndate = #{ndate,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="ttype != null">
+        ttype = #{ttype,jdbcType=VARCHAR},
+      </if>
+      <if test="hot != null">
+        hot = #{hot,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideabobo.model.Replay">
+    update wct_replay
+    set pid = #{pid,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      ndate = #{ndate,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      ttype = #{ttype,jdbcType=VARCHAR},
+      hot = #{hot,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
